@@ -28,3 +28,12 @@ You can now access the **visualizer** at http://127.0.0.1:4444 using your browse
 
 Python terminal:
 `>>> h1.ping(h3)`
+
+or you can send the ping from the visualizer by: (1) selecting h1 and pressing A on the keyboard; 
+selecting h3 and pressing B ; and (3) pressing P to send a ping from host A to host B .
+
+You should see the “ping” and “pong” packets being delivered between h1 and h3. You should also see both packets delivered to h2 despite it not being the recipient. This behavior is expected since the hub simply floods packets everywhere. You may also observe what’s going on from the log messages printed to the Python terminal.
+
+Flooding packets is problematic when the network has loops. Let see this in action by launching the simulator with the topos.candy topology, which has a loop.
+
+``$ python simulator.py --start --default-switch-type=examples.hub topos.candy``
