@@ -37,3 +37,14 @@ You should see the “ping” and “pong” packets being delivered between h1 
 Flooding packets is problematic when the network has loops. Let see this in action by launching the simulator with the topos.candy topology, which has a loop.
 
 ``$ python simulator.py --start --default-switch-type=examples.hub topos.candy``
+
+**Testing**
+To help you check your work, we provide you with unit and comprehensive tests. 
+  `$ python dv_unit_tests.py 5`
+For comprehensive tests run 
+`$ python simulator.py --default-switch-type=dv_router \ --default-host-type=dv_comprehensive_test.TestHost \ topos.rand --switches=5 --links=10 --seed=1 \ dv_comprehensive_test --seed=43`
+  `>>> start()`
+This command will launch the simulator on a pseudorandomly generated topology with 5 switches and 10 links. The comprehensive test will start running after you enter start() into the Python terminal. As usual, you may observe the test progress in the visualizer.
+
+The comprehensive test will run indefinitely until a test failure occurs. If that happens, you can type commands into the Python terminal and use the visualizer to debug.
+
