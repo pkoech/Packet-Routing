@@ -1,2 +1,30 @@
-# Project 1: Distance Vector Routinng (packet routing)
+# Distance Vector Routinng (packet routing)
 
+**Problem Statement**
+
+The goal of this project is for to implement distributed routing algorithms, where all routers run an algorithm that allows
+them to transport packets to their destination, but no central authority determines the forwarding paths. The code run at a 
+router, and a routing simulator that builds a graph connecting routers to each other and to simulate hosts on the network is included. In this project (**Bellman Ford algorithm**)a version of a distance vector protocol that computes efficient paths across the network is implemented.
+
+**Simulation Environment**
+
+You will be developing your router in Python 2.7 under a simulation environment provided by us. The simulation environment, as well as your router implementation, lives under the  `simulation` directory; you should cd into this directory before entering any terminal commands provided in this document.
+
+In the simulation environment, every type of network device (e.g., a host or your router) is modeled by a subclass of the Router class. Each Router has a number of ports, each of which may be connected to a neighboring entity (e.g., a host or another router). 
+Each link connecting two entities has a latency—think of it as the link’s propagation delay. Your `Router` sends and receives Packet’s to and from its neighbors. Both the Router and Packet classes are defined in the sim.basics module
+
+Before we begin, let’s make sure that your Python version is supported. 
+Type in your terminal:
+`$ python --version`
+You should be good to go if the printed version has the form `Python 2.7.*.`
+
+To get you started, we have provided an implementation of a hub—a network device that floods any packet it receives to all of its ports (other than the port that the packet came from). The hub is already implemented and you don’t need to submit anything for this section.
+
+Take a look at the hub implementation in examples/hub.py. Having no need to record any routes, the hub only implements the handle_data_packet method to flood data packets.
+Let’s try out the hub on a linear topology with three hosts:
+
+`$ python simulator.py --start --default-switch-type=examples.hub topos.linear --n=3`
+You can now access the **visualizer** at http://127.0.0.1:4444 using your browser; you should see the hosts and routers displayed against a purple background. Let’s now make host h1 send a ping packet to host h3. You can either type into the 
+
+Python terminal:
+`>>> h1.ping(h3)`
